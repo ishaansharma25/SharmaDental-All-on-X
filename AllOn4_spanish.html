@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implantes All On X | Sharma Dental</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        .pt-32 {
+            padding-top: 13rem !important;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 12px;
+            margin: 10px 0;
+        }
+
+        .financing-btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 9999px;
+            background-color: #e0f7e0;
+            color: #2e7d32;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        .financing-btn:hover {
+            background-color: #c8e6c9;
+        }
+
+        .hero-section {
+            background: #3B6983;
+        }
+        .price-card {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-radius: 16px;
+        }
+        .price-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .feature-item {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+        }
+        .feature-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .consultation-btn {
+            background: linear-gradient(135deg, #f08f00 0%, #ffae37 100%);
+            transition: all 0.3s ease;
+        }
+        .consultation-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px #3B6983;
+        }
+        .testimonial-card {
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .gradient-border {
+            position: relative;
+        }
+        .gradient-border::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #3B6983 0%, 100%);
+            border-radius: 2px;
+        }
+        .doctor-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px #3B6983;
+        }
+        .doctor-image-container::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, rgba(255,255,255,0.9) 0%, transparent 100%);
+            z-index: 1;
+        }
+        
+        /* Modal styles for intake form */
+        .intake-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .intake-modal-content {
+            background: #fff;
+            border-radius: 12px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .intake-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .intake-modal-close:hover {
+            color: #000;
+        }
+
+        .intake-container {
+            padding: 28px;
+            background: linear-gradient(180deg,#eef6fb 0%, #f7fafc 100%);
+            color: #0f172a;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .intake-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 6px 20px rgba(12, 20, 30, 0.06);
+            margin-bottom: 18px;
+        }
+
+        .intake-h1 { 
+            margin: 0 0 6px; 
+            font-size: 22px; 
+            font-weight: bold;
+            color: #0b79d0;
+            text-align: center;
+        }
+
+        .intake-lead { 
+            margin: 0 0 18px; 
+            color: #6b7280; 
+        }
+
+        .intake-grid { 
+            display: grid; 
+            gap: 12px; 
+            grid-template-columns: repeat(2, 1fr); 
+        }
+
+        .intake-col-1 { 
+            grid-column: 1 / -1; 
+        }
+
+        .intake-label { 
+            display:block; 
+            font-size: 13px; 
+            margin-bottom:6px; 
+            color:#0f172a; 
+        }
+
+        .intake-input, .intake-textarea, .intake-select {
+            width: 100%; 
+            padding: 10px 12px; 
+            border-radius: 8px;
+            border: 1px solid #e6e9ef; 
+            font-size: 14px; 
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        .intake-textarea { 
+            min-height: 110px; 
+            resize: vertical; 
+        }
+
+        .intake-actions { 
+            text-align: right; 
+            margin-top: 12px; 
+        }
+
+        .intake-button {
+            background: #0b79d0; 
+            color: white; 
+            padding: 10px 16px;
+            border: none; 
+            border-radius: 8px; 
+            font-weight: 600; 
+            cursor: pointer;
+        }
+
+        .intake-muted { 
+            color: #6b7280; 
+            font-size: 13px; 
+        }
+
+        .intake-required { 
+            color: #dc2626; 
+            margin-left: 6px; 
+            font-weight:600; 
+        }
+
+        .intake-error { 
+            color:#b91c1c; 
+            font-size:13px; 
+            display:none; 
+            margin-top:6px; 
+        }
+
+        /* Privacy Policy Modal Styles */
+        .policy-modal {
+            display: none;
+            position: fixed;
+            z-index: 2100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .policy-modal-content {
+            background: #fff;
+            border-radius: 12px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.2);
+            position: relative;
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        .policy-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .policy-modal-close:hover {
+            color: #000;
+        }
+
+        .custom-size {
+            width: 256px;
+            height: auto;
+        }
+
+        @media (max-width:720px) {
+            .intake-grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .intake-actions { 
+                text-align: center; 
+            }
+            
+            .policy-modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans antialiased">
+    <!-- Header -->
+    <header class="w-full bg-white shadow-sm fixed top-0 left-0 z-50">
+        <div class="container mx-auto px-6">
+            <nav class="flex items-center justify-between py-4">
+                <a class="navbar-brand" href="https://sharmadentalcenter.com/">
+                    <img src="LogoTransparent-SharmaDental.png" alt="Sharma Dental" class="h-16 md:h-20 transition-all duration-300 hover:opacity-90">
+                </a>
+                <div class="hidden md:flex items-center space-x-2">
+                    <a href="#" class="ml-4 consultation-btn text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg consultation-modal-btn">
+                        <i class="ri-calendar-line text-xl"></i>
+                        <span>Consulta Gratuita</span>
+                        <i class="ri-arrow-right-line text-xl"></i>
+                    </a>
+                </div>
+                <button class="md:hidden text-gray-700 focus:outline-none">
+                    <i class="ri-menu-line text-2xl"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white pt-32 pb-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+                        Implantes Dentales All-on-X de Alta Calidad y Precios Accesibles
+                    </h1>
+                    <p class="text-xl mb-4 opacity-90 max-w-lg">
+                        Las soluciones de implantes dentales más económicas en el Área de la Bahía.
+                    </p>
+                    <p class="text-xl mb-8 opacity-90 max-w-lg">
+                        Recupera tu confianza con una sonrisa que se ve, siente y funciona como dientes naturales. <br><br>
+                        Nuestros implantes All-on-X están diseñados para brindar comodidad, belleza y rendimiento duraderos, confiados por pacientes en todo el Área de la Bahía, CA.
+                    </p>
+
+                    <div class="flex items-center mb-8">
+                        <div class="flex mr-4">
+                            <i class="ri-star-fill text-yellow-300 text-2xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-300 text-2xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-300 text-2xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-300 text-2xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-300 text-2xl mr-1"></i>
+                        </div>
+                        <span class="text-lg opacity-90">4.9/5 (350+ reseñas)</span>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#" class="consultation-btn text-white font-bold py-3 px-8 rounded-full inline-flex items-center space-x-2 consultation-modal-btn">
+                            <i class="ri-calendar-line text-xl"></i>
+                            <span>Consulta Gratuita</span>
+                            <i class="ri-arrow-right-line text-xl"></i>
+                        </a>
+                        <a href="tel:925-833-6200" class="bg-white bg-opacity-10 hover:bg-opacity-20 text-white font-bold py-3 px-6 rounded-full inline-flex items-center border border-white border-opacity-30 transition-all">
+                            <i class="ri-phone-line mr-2"></i> (925) 833-6200
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 flex justify-center relative">
+                    <div class="price-card bg-white rounded-xl p-8 max-w-md w-full transform transition-all duration-500 hover:rotate-1 relative overflow-visible">
+                        <!-- Denture image overlapping the top -->
+                        <div class="absolute -top-20 left-1/2 transform -translate-x-1/2 w-64 h-40">
+                            <img src="All-on-X-removebg-preview.png" 
+                                 alt="Imagen de prótesis dental" 
+                                 class="custom-size rounded-lg">
+                        </div>
+                        
+                        <div class="mt-24">
+                            <h3 class="text-2xl font-bold text-center text-gray-800 mb-6">Implantes All on 4/5/6 PMMA</h3>
+                            <div class="flex justify-between mb-8">
+                                <div class="text-center px-4">
+                                    <p class="mb-2" style="color: black;">Un Arco</p>
+                                    <p style="color: gray;">Desde</p>
+                                    <p class="text-3xl font-bold" style="color: #3B6983;">$13,550</p>
+                                    <p class="text-sm text-gray-500 mt-1">o $210/mes*</p>
+                                </div>
+                                <div class="text-center px-4">
+                                    <p class="mb-2" style="color: black;">Dos Arcos</p>
+                                    <p style="color: gray;">Desde</p>
+                                    <p class="text-3xl font-bold" style="color: #3B6983;">$27,000</p>
+                                    <p class="text-sm text-gray-500 mt-1">o $380/mes*</p>
+                                </div>
+                            </div>
+                            <a href="#" class="consultation-btn text-white text-center font-bold py-4 px-6 rounded-full block mb-4 consultation-modal-btn">
+                                <i class="ri-calendar-line text-xl"></i>
+                                <span> Agenda Tu Consulta Gratuita</span>
+                                <i class="ri-arrow-right-line text-xl"></i>
+                            </a>
+                            <div class="flex flex-col items-center text-center text-sm text-gray-600 mt-4">
+                                <div class="flex items-center mb-2">
+                                    <i class="ri-check-line text-green-500 mr-2"></i>
+                                    <span>$0 de Pago Inicial</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span>* Financiamiento Disponible | Se requiere verificación de crédito para financiamiento</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-16">
+        <!-- Explore Our Implant Offerings -->
+        <section class="mb-24">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 gradient-border inline-block">Explora Nuestras Soluciones de Implantes</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    El Dr. Sharma proporciona soluciones integrales de implantes dentales personalizadas según sus necesidades y presupuesto.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 2 Implant Retained Overdentures -->
+                <div class="price-card bg-white rounded-xl p-8 flex flex-col">
+                    <div class="flex flex-col items-center flex-grow">
+                        <img src="Implant-Denture.png" alt="Sobredentaduras con 2 Implantes Inferiores" class="w-52 mb-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Sobredentaduras con 2 Implantes</h3>
+                        <div class="flex justify-between w-full mb-8">
+                            <div class="text-center px-2">
+                                <p class="text-gray-600 mb-2">Un Arco</p>
+                                <p class="text-2xl font-bold" style="color: #3B6983;">$6,995</p>
+                            </div>
+                            <div class="text-center px-2">
+                                <p class="text-gray-600 mb-2">Dos Arcos</p>
+                                <p class="text-2xl font-bold" style="color: #3B6983;">$13,950</p>
+                            </div>
+                        </div>
+            
+                        <a href="#" class="consultation-btn text-white text-center font-bold py-4 px-6 rounded-full block mb-4 consultation-modal-btn">
+                            <i class="ri-calendar-line text-xl"></i>
+                            <span>Consulta Gratuita</span>
+                            <i class="ri-arrow-right-line text-xl"></i>
+                        </a>
+                    </div>
+                    <div class="mt-8">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Evaluación Oral Completa</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Tomografía Cone-Beam</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Todas las extracciones, si son necesarias</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>2 Implantes (Inferior) / 4 Implantes (Superior)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Dentadura Temporal Inmediata</span>
+                            </li>
+                             <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Seguimiento y Ajustes Incluidos</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Dientes Personalizados en Color y Forma</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Sedación Oral</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Garantía de 5 Años</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span><strong>Prótesis Provisional de Encaje y Final Fija</strong></span>
+                            </li>
+                            <br>
+                            <small>(EL PRECIO PUEDE VARIAR SI NECESITA PROCEDIMIENTOS ADICIONALES.)</small>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- 4 Implant Retained Overdentures -->
+                <div class="price-card bg-white rounded-xl p-8 flex flex-col">
+                    <div class="flex flex-col items-center flex-grow">
+                        <img src="All-on-X.png" alt="Sobredentaduras con 4 Implantes" class="w-56 mb-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Implantes All On X PMMA</h3>
+                        <div class="flex justify-between w-full mb-8">
+                            <div class="text-center px-2">
+                                <p class="text-gray-600 mb-2">Un Arco</p>
+                                <p class="text-2xl font-bold" style="color: #3B6983;">$13,550</p>
+                            </div>
+                            <div class="text-center px-2">
+                                <p class="text-gray-600 mb-2">Dos Arcos</p>
+                                <p class="text-2xl font-bold" style="color: #3B6983;">$27,000</p>
+                            </div>
+                        </div>         
+                        <a href="#" class="consultation-btn text-white text-center font-bold py-4 px-6 rounded-full block mb-4 consultation-modal-btn">
+                            <i class="ri-calendar-line text-xl"></i>
+                            <span>Consulta Gratuita</span>
+                            <i class="ri-arrow-right-line text-xl"></i>
+                        </a>
+                    </div>
+                    <div class="mt-8">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Evaluación Oral Completa</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Tomografía Cone-Beam</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Todas las extracciones</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>4 a 6 Implantes Por Arco</span>
+                            </li>
+                             <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Todos los Injertos Óseos</span>
+                            </li>
+                             <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Prótesis del Mismo Día Impresa en 3D</span>
+                            </li>
+                             <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Diseño Digital de Sonrisa</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Sedación Oral</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Garantía de 5 Años</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span><strong>Prótesis Provisional de Encaje</strong></span>
+                            </li>
+                            <br>
+                            <small>(EL PRECIO PUEDE VARIAR SI NECESITA PROCEDIMIENTOS ADICIONALES.)</small>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- All-on-X Full Arch -->
+                <div class="price-card bg-white rounded-xl p-8 flex flex-col">
+                    <div class="flex flex-col items-center flex-grow">
+                        <img src="All-on-x-Zirconia.png" alt="All-on-X con Zirconia" class="w-56 mb-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">All-on-X con Zirconia</h3>
+                        <div class="flex justify-between w-full mb-8">
+                            <div class="text-center px-2">
+                                <p class="text-gray-600 mb-2">Un Arco</p>
+                                <p class="text-2xl font-bold" style="color: #3B6983;">$16,500</p>
+                            </div>
+                            <div class="text-center px-2">
+                                <p class="text-gray-600 mb-2">Dos Arcos</p>
+                                <p class="text-2xl font-bold" style="color: #3B6983;">$33,000</p>
+                            </div>
+                        </div>
+
+                        <a href="#" class="consultation-btn text-white text-center font-bold py-4 px-6 rounded-full block mb-4 consultation-modal-btn">
+                            <i class="ri-calendar-line text-xl"></i>
+                            <span>Consulta Gratuita</span>
+                            <i class="ri-arrow-right-line text-xl"></i>
+                        </a>
+                    </div>
+                    <div class="mt-8">
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Evaluación Oral Completa</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Tomografía Cone-Beam</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Todas las extracciones</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>4 a 6 Implantes Por Arco</span>
+                            </li>
+                             <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Todos los Injertos Óseos</span>
+                            </li>
+                             <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Prótesis del Mismo Día Impresa en 3D</span>
+                            </li>
+                             <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Diseño Digital de Sonrisa</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Sedación Oral</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span>Garantía de 5 Años</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="ri-checkbox-circle-fill text-blue-500 mt-1 mr-3 text-lg" style="color: #3B6983;"></i>
+                                <span><strong>Prótesis Provisional de Encaje y Final Fija</strong></span>
+                            </li>
+                            <br>
+                            <small>(EL PRECIO PUEDE VARIAR SI NECESITA PROCEDIMIENTOS ADICIONALES.)</small>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Width All-on-4 Section -->
+            <section class="mb-16 bg-gradient-to-r from-blue-50 to-blue-100 py-16">
+                <div class="container mx-auto px-6">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Implantes Dentales All-on-4</h2>
+                        <p class="text-xl text-gray-600 max-w-3xl mx-auto">¡Prótesis de Encaje en SOLO UN DÍA!</p>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                        <div class="grid lg:grid-cols-2">
+                            <!-- Left Side - Benefits -->
+                            <div class="p-10">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-6">Sobre los Implantes All-on-X</h3>
+                                <p class="text-gray-600 mb-8 text-lg leading-relaxed">
+                                    La técnica All-on-X fue desarrollada como la solución óptima para restaurar arcos completos de mandíbulas superiores e inferiores. Este enfoque revolucionario proporciona a los pacientes un arco dental fijo y no removible asegurado por solo cuatro implantes dentales colocados estratégicamente, todo completado en un solo día. Perfecto para pacientes que actualmente tienen dentaduras postizas o necesitan remodelaciones completas de sonrisa.
+                                </p>
+                                
+                                <h4 class="text-xl font-bold text-gray-800 mb-6" style="color: #3B6983;">Beneficios Clave</h4>
+                                <ul class="space-y-4">
+                                    <li class="flex items-start">
+                                        <div class="rounded-full p-2 mr-4" style="background-color: #3B6983; color: white;">
+                                            <i class="ri-check-line text-lg"></i>
+                                        </div>
+                                        <span class="text-gray-700 flex-1">Restauración de arco completo con solo 4-6 implantes por mandíbula</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="rounded-full p-2 mr-4" style="background-color: #3B6983; color: white;">
+                                            <i class="ri-check-line text-lg"></i>
+                                        </div>
+                                        <span class="text-gray-700 flex-1">Efectivo incluso con pérdida ósea significativa (no se necesitan injertos en la mayoría de los casos)</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="rounded-full p-2 mr-4" style="background-color: #3B6983; color: white;">
+                                            <i class="ri-check-line text-lg"></i>
+                                        </div>
+                                        <span class="text-gray-700 flex-1">Salga con dientes el mismo día - ¡saliendo sonriendo!</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="rounded-full p-2 mr-4" style="background-color: #3B6983; color: white;">
+                                            <i class="ri-check-line text-lg"></i>
+                                        </div>
+                                        <span class="text-gray-700 flex-1">Recuperación más rápida en comparación con implantes tradicionales</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <div class="rounded-full p-2 mr-4" style="background-color: #3B6983; color: white;">
+                                            <i class="ri-check-line text-lg"></i>
+                                        </div>
+                                        <span class="text-gray-700 flex-1">Más económico que los implantes individuales para restauración de arco completo</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Right Side - Procedure -->
+                            <div class="p-10 bg-gray-50">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-6">El Proceso All-on-X</h3>
+                                
+                                <div class="mb-8">
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-4" style="color: #3B6983;">Consulta Inicial</h4>
+                                    <p class="text-gray-600 mb-4">
+                                        Su viaje comienza con una evaluación integral donde el Dr. Sharma:
+                                    </p>
+                                    <ul class="space-y-2 pl-5">
+                                        <li class="flex items-start">
+                                            <i class="ri-arrow-right-s-line mt-1 mr-2" style="color: #3B6983;"></i>
+                                            <span>Evaluará su salud oral y estructura ósea</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="ri-arrow-right-s-line mt-1 mr-2" style="color: #3B6983;"></i>
+                                            <span>Determinará si se necesitan extracciones</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="ri-arrow-right-s-line mt-1 mr-2" style="color: #3B6983;"></i>
+                                            <span>Tomará escaneos digitales e imágenes 3D</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="ri-arrow-right-s-line mt-1 mr-2" style="color: #3B6983;"></i>
+                                            <span>Creará su plan de tratamiento personalizado</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="mb-8">
+                                    <h4 class="text-xl font-semibold text-gray-800 mb-4" style="color: #3B6983;">Día del Tratamiento</h4>
+                                    <p class="text-gray-600">
+                                        En su día del procedimiento, recibirá:
+                                    </p>
+                                    <ul class="space-y-2 pl-5 mt-2">
+                                        <li class="flex items-start">
+                                            <i class="ri-checkbox-circle-line mt-1 mr-2" style="color: #3B6983;"></i>
+                                            <span>Opciones de sedación cómodas</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="ri-checkbox-circle-line mt-1 mr-2" style="color: #3B6983;"></i>
+                                            <span>Colocación precisa de implantes usando cirugía guiada</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="ri-checkbox-circle-line mt-1 mr-2" style="color: #3B6983;"></i>
+                                            <span>Sus nuevos dientes temporales colocados el mismo día</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="text-center mt-8">
+                                    <a href="https://book2.getweave.com/d2abedcb-0bcf-49e3-ade9-e7de27f8e08c/request-appointment?source=WEBSITE" 
+                                       class="consultation-btn text-white font-bold py-4 px-8 rounded-full inline-flex items-center justify-center text-lg">
+                                        <i class="ri-calendar-line mr-2"></i>Agendar Consulta
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Additional Information -->
+            <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-8 mt-12 max-w-4xl mx-auto">
+                <div class="flex items-start">
+                    <div class="bg-blue-600 text-white p-3 rounded-lg mr-6">
+                        <i class="ri-information-line text-2xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Información Importante Sobre Nuestras Soluciones de Implantes</h3>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <p class="text-gray-700 mb-6">
+                                    Durante su consulta, el Dr. Sharma proporcionará una evaluación completa y precios transparentes.
+                                </p>
+                                <div class="bg-white rounded-lg p-4">
+                                    <h4 class="font-bold text-gray-800 mb-3">Opciones de Pago Flexibles</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex items-start">
+                                            <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+                                            <span>Financiamiento disponible</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+                                            <span>Planes de pago mensuales</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+                                            <span>Consulta Gratuita</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+                                            <span>Garantía de 5 Años</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+                                            <span>Coordinación con seguros</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-3">¿Por Qué Elegir al Dr. Sharma?</h4>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+                                        <span>30+ años de experiencia especializada en Implantes</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+                                        <span>Escáner Digital iTero™ y PrimeScan™ – Escaneo 3D sin impresiones</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+                                        <span>Cirugía de Implantes Asistida por Robot Yomi® para colocación precisa</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+                                        <span>Planes de tratamiento personalizados</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+                                        <span>Software de Planificación ExoCAD y Preview Smile</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="ri-check-line text-green-500 mt-1 mr-2"></i>
+                                        <span>Laboratorio dental en el sitio para mayor precisión</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Sharma Dental Section -->
+        <section class="mb-24">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 gradient-border inline-block">¿Por Qué Elegir Sharma Dental?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Ofrecemos una experiencia excepcional para el paciente y los implantes dentales de más alta calidad a precios competitivos</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Feature 1 -->
+                <div class="feature-item bg-white rounded-xl p-6 h-full">
+                    <div class="flex flex-col h-full">
+                        <div class="bg-blue-100 p-4 rounded-lg w-14 h-14 flex items-center justify-center mb-5">
+                            <i class="ri-home-4-line text-2xl" style="color: #3B6983;"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Cuidado Completo Bajo un Mismo Techo</h3>
+                        <p class="text-gray-600 flex-grow">Desde la consulta hasta la restauración final, cada paso ocurre en nuestras instalaciones de última generación con el mismo equipo dedicado.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-item bg-white rounded-xl p-6 h-full">
+                    <div class="flex flex-col h-full">
+                        <div class="bg-blue-100 p-4 rounded-lg w-14 h-14 flex items-center justify-center mb-5">
+                            <i class="ri-medal-line text-2xl" style="color: #3B6983;"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Capacitación Avanzada y Calificaciones</h3>
+                        <p class="text-gray-600 flex-grow">El Dr. Sharma posee credenciales BDS, DDS, MDS, MS y MICOI que garantizan atención experta y precisión.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-item bg-white rounded-xl p-6 h-full">
+                    <div class="flex flex-col h-full">
+                        <div class="bg-blue-100 p-4 rounded-lg w-14 h-14 flex items-center justify-center mb-5">
+                            <i class="ri-history-line text-2xl" style="color: #3B6983;"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Décadas de Experiencia en Implantes</h3>
+                        <p class="text-gray-600 flex-grow">Desde que colocó su primer implante en 2005, el Dr. Sharma ha restaurado exitosamente miles de sonrisas con implantes dentales.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-item bg-white rounded-xl p-6 h-full">
+                    <div class="flex flex-col h-full">
+                        <div class="bg-blue-100 p-4 rounded-lg w-14 h-14 flex items-center justify-center mb-5">
+                            <i class="ri-focus-2-line text-2xl" style="color: #3B6983;"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Especialización en Implantes</h3>
+                        <p class="text-gray-600 flex-grow">A diferencia de los dentistas generales, los implantes son nuestro enfoque, lo que lleva a mejores resultados, costos más bajos y menos visitas.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-item bg-white rounded-xl p-6 h-full">
+                    <div class="flex flex-col h-full">
+                        <div class="bg-blue-100 p-4 rounded-lg w-14 h-14 flex items-center justify-center mb-5">
+                            <i class="ri-cpu-line text-2xl" style="color: #3B6983;"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Tecnología de Vanguardia</h3>
+                        <p class="text-gray-600 flex-grow">Imágenes 3D, cirugía guiada y flujos de trabajo digitales garantizan precisión, recuperación más rápida y resultados de apariencia natural.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-item bg-white rounded-xl p-6 h-full">
+                    <div class="flex flex-col h-full">
+                        <div class="bg-blue-100 p-4 rounded-lg w-14 h-14 flex items-center justify-center mb-5">
+                            <i class="ri-price-tag-3-line text-2xl" style="color: #3B6983;"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Precios Transparentes</h3>
+                        <p class="text-gray-600 flex-grow">Sin sorpresas. Conocerá todos los costos por adelantado, con opciones de financiamiento flexibles para hacer el tratamiento asequible.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 7 -->
+                <div class="feature-item bg-white rounded-xl p-6 h-full">
+                    <div class="flex flex-col h-full">
+                        <div class="bg-blue-100 p-4 rounded-lg w-14 h-14 flex items-center justify-center mb-5">
+                            <i class="ri-heart-pulse-line text-2xl" style="color: #3B6983;"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Atención Centrada en la Comodidad</h3>
+                        <p class="text-gray-600 flex-grow">Múltiples opciones de sedación, incluida sedación a nivel hospitalario para pacientes con ansiedad dental o necesidades complejas.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 8 -->
+                <div class="feature-item bg-white rounded-xl p-6 h-full">
+                    <div class="flex flex-col h-full">
+                        <div class="bg-blue-100 p-4 rounded-lg w-14 h-14 flex items-center justify-center mb-5">
+                            <i class="ri-home-4-line text-2xl" style="color: #3B6983;"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Laboratorio Dental en el Sitio</h3>
+                        <p class="text-gray-600 flex-grow">Nuestro técnico y doctor colaboran directamente con usted para crear su sonrisa perfecta con precisión y arte.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Dr Sharma -->
+        <section class="mb-24 py-12">
+            <div class="flex flex-col lg:flex-row items-center bg-white rounded-2xl overflow-hidden shadow-xl">
+                <!-- Text Content -->
+                <div class="lg:w-1/2 p-8 md:p-12">
+                    <div class="mb-8">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Conozca al Dr. Sharma</h2>
+                        <div class="relative inline-block">
+                            <p class="text-lg font-medium inline-block bg-blue-50 px-6 py-2 rounded-full" style="color: #3B6983;">
+                                BDS, DDS, MDS, MS, MICOI
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="prose text-gray-600 text-lg leading-relaxed max-w-2xl">
+                        <p class="mb-6">Con más de 35 años en odontología, he sido testigo de cómo una sonrisa completa transforma vidas. Los pacientes a menudo comparten cómo la pérdida de dientes afectó su confianza y capacidad para disfrutar de la comida. Poder restaurar estos placeres fundamentales a través de la implantología dental es por lo que amo lo que hago.</p>
+                        
+                        <p class="mb-6">El momento en que los pacientes ven su nueva sonrisa por primera vez es inolvidable. Esa mirada de alegría e incredulidad cuando se dan cuenta de que pueden sonreír con confianza nuevamente, es por lo que vengo a trabajar todos los días. Muchos me dicen que no habían sonreído así en años.</p>
+                        
+                        <p>Durante las visitas de seguimiento, los pacientes frecuentemente comparten cómo los implantes cambiaron sus vidas: volver a comer sus alimentos favoritos, sonreír en fotos, sentirse más saludables. Estas historias me motivan a seguir innovando y perfeccionando mi arte. Si está considerando implantes, lo invito a experimentar esta transformación de primera mano.</p>
+                    </div>
+                    
+                    <div class="mt-10 flex flex-wrap gap-4">
+                        <a href="#" class="consultation-btn text-white font-bold py-3 px-8 rounded-full inline-flex items-center consultation-modal-btn">
+                            Agendar Consulta <i class="ri-arrow-right-line ml-2"></i>
+                        </a>
+                        <a href="tel:925-833-6200" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-full inline-flex items-center border border-blue-600 hover:bg-blue-700 transition-all">
+                            <i class="ri-phone-line mr-2"></i> (925) 833-6200
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Doctor Image -->
+                <div class="lg:w-1/2 h-full">
+                    <div class="doctor-image-container h-full">
+                        <img src="DrSharmaImage-removebg-preview.png" 
+                             alt="Dr. Sharma" 
+                             class="w-full h-full object-cover object-center">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patient Testimonials -->
+        <section class="mb-24">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 gradient-border inline-block">Historias de Éxito de Pacientes</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Escuche a pacientes que transformaron sus sonrisas con nuestras soluciones de implantes All-on-X</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-white rounded-xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="flex mr-4">
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                        </div>
+                        <span class="text-sm text-gray-500">Hace 2 semanas</span>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "¡Sharma Dental es increíble! Todo el personal es muy atento, conocedor y profesional. El Dr. Sharma es completamente accesible y brinda a sus pacientes la mejor atención. Le pedí a Dios un milagro el día que entré a su consultorio. Había ido a otros dentistas que me decían todo tipo de cosas diferentes. No pensé que era candidato para implantes, ¡pero el Dr. Sharma dijo que podían hacer este procedimiento en 4 horas! ¡Quedé asombrado y obtuve mi milagro! ¡Gracias Sharma Dental! 😃"
+                    </p>
+                    <div class="flex items-center">
+                        <div class="text-blue-800 rounded-full w-12 h-12 flex items-center justify-center mr-4" style="background-color: #3B6983; color: white;">
+                            <span class="font-bold text-lg">MT</span>
+                        </div>
+                        <div>
+                            <p class="font-medium text-gray-800">Carolyn Wilson</p>
+                            <p class="text-sm text-gray-500">Oakland, CA</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-white rounded-xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="flex mr-4">
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                        </div>
+                        <span class="text-sm text-gray-500">Hace 1 mes</span>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "Primero que nada, esta es la clínica dental más increíble. Todos aquí son individuos determinados y sobresalientes. Por último, pero no menos importante, el Dr. Sharma es el mejor. No tengo palabras para este procedimiento, pero el resultado es sobresaliente. Todo lo que puedo decir es que tenga completa confianza en el Dr. Sharma y su equipo. Son absolutamente geniales. Esta oficina hará un esfuerzo adicional para satisfacer sus necesidades. Son las personas más amables y talentosas. Dios bendiga al Dr. Sharma y a todo su equipo en la oficina de Dublin."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="text-blue-800 rounded-full w-12 h-12 flex items-center justify-center mr-4" style="background-color: #3B6983; color: white;">
+                            <span class="font-bold text-lg">SK</span>
+                        </div>
+                        <div>
+                            <p class="font-medium text-gray-800">Harbaksh Kang</p>
+                            <p class="text-sm text-gray-500">Pleasanton, CA</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card bg-white rounded-xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="flex mr-4">
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                            <i class="ri-star-fill text-yellow-400 text-xl mr-1"></i>
+                        </div>
+                        <span class="text-sm text-gray-500">Hace 2 meses</span>
+                    </div>
+                    <p class="text-gray-600 mb-6 italic">
+                        "¡El Dr. Sharma y todo su equipo son los mejores! El Dr. Sharma hizo mis implantes ALL on four e hizo un trabajo fantástico. Siempre me siento bienvenido una vez que entro a la clínica, incluso sin cita. Recuerdo pagar de más en efectivo en la recepción y me lo devolvieron inmediatamente. Personal muy honesto. Sharma y todo el equipo se asegurarán de que reciba una atención de primera clase. Recomiendo mucho esta clínica. Los veré pronto para otro all on 4. Gracias Dr. Sharma y a todo el equipo."
+                    </p>
+                    <div class="flex items-center">
+                        <div class="text-blue-800 rounded-full w-12 h-12 flex items-center justify-center mr-4" style="background-color: #3B6983; color: white;">
+                            <span class="font-bold text-lg">DP</span>
+                        </div>
+                        <div>
+                            <p class="font-medium text-gray-800">Mark M.</p>
+                            <p class="text-sm text-gray-500">Fremont, CA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://www.google.com/search?q=sharma+dental+center+reviews" class="inline-flex items-center font-medium hover:text-blue-800 transition-colors" style="color: #3B6983;">
+                    Lea más historias de éxito <i class="ri-arrow-right-line ml-2"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="bg-gradient-to-r hero-section text-white rounded-2xl p-10 md:p-16 text-center shadow-xl">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">¿Listo para Transformar Tu Sonrisa?</h2>
+                <p class="text-xl mb-8 opacity-90">Agenda una consulta complementaria con el Dr. Sharma para discutir tus opciones de implantes All-on-X.</p>
+                <div class="flex flex-col md:flex-row justify-center gap-6">
+                    <a href="#" class="bg-white font-bold py-4 px-10 rounded-full hover:bg-gray-50 transition-all duration-300 hover:shadow-lg inline-flex items-center justify-center consultation-modal-btn" style="color: #3B6983;">
+                        <i class="ri-calendar-line mr-2"></i> Agendar Consulta
+                    </a>
+                    <a href="tel:925-833-6200" class="bg-transparent border-2 border-white text-white font-bold py-4 px-10 rounded-full hover:bg-white hover:text-blue-600 transition-all duration-300 inline-flex items-center justify-center">
+                        <i class="ri-phone-line mr-2"></i> Llama Ahora: (925) 833-6200
+                    </a>
+                </div>
+                <div class="mt-8 flex items-center justify-center">
+                    <div class="flex items-center bg-white bg-opacity-20 rounded-full px-6 py-2">
+                        <i class="ri-time-line mr-2"></i>
+                        <span>Lun–Dom: 10 AM – 7 PM | ¡También estamos abiertos los fines de semana!</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-10">
+                <div>
+                    <h3 class="text-xl font-bold mb-6 flex items-center">
+                        <img src="LogoTransparent-SharmaDental.png" alt="Sharma Dental" class="h-12 mr-3" style="height: 7rem;">
+                    </h3>
+                    <p class="text-gray-400 mb-6">Implantología Avanzada y Soluciones Cosméticas</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Enlaces Rápidos</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://sharmadentalcenter.com/" class="text-gray-400 hover:text-white transition-colors">Inicio</a></li>
+                        <li><a href="https://sharmadentalcenter.com/about/" class="text-gray-400 hover:text-white transition-colors">Sobre el Dr. Sharma</a></li>
+                        <li><a href="https://sharmadentalcenter.com/services/" class="text-gray-400 hover:text-white transition-colors">Servicios Dentales</a></li>
+                        <li><a href="/blog/" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="/testimonials/" class="text-gray-400 hover:text-white transition-colors">Testimonios de Pacientes</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Nuestros Servicios</h4>
+                    <ul class="space-y-3">
+                        <li><a href="https://sharmadentalcenter.com/services/" class="text-gray-400 hover:text-white transition-colors">Implantes All-on-X</a></li>
+                        <li><a href="https://sharmadentalcenter.com/services/" class="text-gray-400 hover:text-white transition-colors">Implantes Dentales</a></li>
+                        <li><a href="https://sharmadentalcenter.com/services/" class="text-gray-400 hover:text-white transition-colors">Reconstrucción Completa de Boca</a></li>
+                        <li><a href="https://sharmadentalcenter.com/services/" class="text-gray-400 hover:text-white transition-colors">Odontología Cosmética</a></li>
+                        <li><a href="https://sharmadentalcenter.com/services//" class="text-gray-400 hover:text-white transition-colors">Odontología con Sedación</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Contáctanos</h4>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <i class="ri-map-pin-line text-gray-400 mt-1 mr-3"></i>
+                            <div>
+                                <p class="text-gray-400">4920 Dublin Blvd. Suite 200</p>
+                                <p class="text-gray-400">Dublin, CA 94568</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="ri-phone-line text-gray-400 mr-3"></i>
+                            <a href="tel:925-833-6200" class="text-gray-400 hover:text-white transition-colors">(925) 833-6200</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="ri-mail-line text-gray-400 mr-3"></i>
+                            <a href="mailto:info@sharmadentaldublin.com" class="text-gray-400 hover:text-white transition-colors">info@sharmadentaldublin.com</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="ri-time-line text-gray-400 mr-3"></i>
+                            <div>
+                                <p class="text-gray-400">Lun–Dom: 10 AM – 7 PM</p>
+                                <p class="text-gray-400">¡También abrimos fines de semana!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">&copy; 2025 Sharma Dental. Todos los derechos reservados.</p>
+                <div class="flex space-x-6">
+                    <a href="https://sharmadentalcenter.com/privacy-policy/" class="text-gray-400 hover:text-white text-sm transition-colors">Política de Privacidad</a>
+                    <a href="https://sharmadentalcenter.com/sitemap/" class="text-gray-400 hover:text-white text-sm transition-colors">Mapa del Sitio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- New Patient Intake Form Modal -->
+    <div id="intakeModal" class="intake-modal">
+        <div class="intake-modal-content">
+            <span class="intake-modal-close">&times;</span>
+            <div class="intake-container">
+                <div class="intake-card">
+                    <h1 class="intake-h1">Sharma Dental — Formulario de Nuevo Paciente</h1>
+                    <p class="intake-lead">¡Bienvenido! Complete este formulario para que podamos prepararnos para su primera visita. Los campos marcados con <span class="intake-required">*</span> son obligatorios.</p>
+
+                    <form id="intakeForm" method="POST" action="https://formspree.io/f/mzzblnzy" novalidate>
+                        <input type="text" name="website_hp" id="website_hp" style="display:none" tabindex="-1" autocomplete="off">
+
+                        <!-- Patient info -->
+                        <div class="intake-card" style="margin-bottom:12px;">
+                            <h2 style="font-size:16px; margin:0 0 10px">Información del paciente</h2>
+                            <div class="intake-grid">
+                                <div><label for="firstName" class="intake-label">Nombre <span class="intake-required">*</span></label><input id="firstName" name="firstName" type="text" class="intake-input" required></div>
+                                <div><label for="lastName" class="intake-label">Apellido <span class="intake-required">*</span></label><input id="lastName" name="lastName" type="text" class="intake-input" required></div>
+                                <div><label for="dob" class="intake-label">Fecha de nacimiento</label><input id="dob" name="dob" type="date" class="intake-input"></div>
+                                <div><label for="phone" class="intake-label">Teléfono móvil <span class="intake-required">*</span></label><input id="phone" name="phone" type="tel" class="intake-input" required></div>
+                                <div><label for="email" class="intake-label">Correo electrónico</label><input id="email" name="email" type="email" class="intake-input"></div>
+                                <div><label for="preferredContact" class="intake-label">Contacto preferido</label>
+                                    <select id="preferredContact" name="preferredContact" class="intake-select">
+                                        <option value="phone">Teléfono</option>
+                                        <option value="sms">SMS</option>
+                                        <option value="email">Correo electrónico</option>
+                                    </select>
+                                </div>
+                                <div class="intake-col-1"><label for="address" class="intake-label">Dirección</label><input id="address" name="address" type="text" class="intake-input"></div>
+                                <div><label for="insurance" class="intake-label">Aseguradora</label><input id="insurance" name="insurance" type="text" class="intake-input"></div>
+                                <div><label for="policyNo" class="intake-label">Póliza / ID de Miembro</label><input id="policyNo" name="policyNo" type="text" class="intake-input"></div>
+                                <div class="intake-col-1"><label for="reason" class="intake-label">Motivo de la visita / Notas</label><textarea id="reason" name="reason" class="intake-textarea"></textarea></div>
+                            </div>
+                        </div>
+
+                        <!-- Privacy -->
+                        <div class="intake-card">
+                            <h2 style="font-size:16px; margin:0 0 10px">Privacidad y consentimiento SMS</h2>
+                            <p style="font-size:13px;">
+                                Valoramos su privacidad. Por favor revise nuestra
+                                <a href="#" id="openPolicy" style="color: #0b79d0;">Política de Privacidad completa</a>.
+                            </p>
+                            <div style="margin-top:12px;">
+                                <label>
+                                    <input type="checkbox" id="agreePrivacy" name="agreePrivacy" required>
+                                    Reconozco y acepto la Política de Privacidad de Sharma Dental. <span class="intake-required">*</span>
+                                </label>
+                            </div>
+
+                            <div style="margin-top:10px;">
+                                <label style="display:block; font-weight:600; margin-bottom:6px;">SMS promocionales y de citas (opcional)</label>
+                                <label>
+                                    <input type="checkbox" id="smsConsent" name="smsConsent" value="yes">
+                                    Sí — Doy mi consentimiento para recibir recordatorios y mensajes de texto promocionales. Pueden aplicarse tarifas por mensajes y datos. Responda STOP para cancelar.
+                                </label>
+                            </div>
+
+                            <div class="intake-error" id="formError">Por favor complete los campos obligatorios y acepte la Política de Privacidad.</div>
+                            <div class="intake-actions"><button class="intake-button" type="submit">Agendar cita ahora</button></div>
+                        </div>
+                    </form>
+                </div>
+                <p class="intake-muted" style="text-align:center;">¿Preguntas? Envíe un correo a <a href="mailto:info@sharmadentaldublin.com">info@sharmadentaldublin.com</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="policyModal" class="policy-modal">
+        <div class="policy-modal-content">
+            <span class="policy-modal-close">&times;</span>
+            <h1 class="intake-h1">Política de Privacidad de Sharma Dental</h1>
+            <br>
+            <p><strong>1. Información que recopilamos:</strong> Nombre, datos de contacto, fecha de nacimiento, detalles del seguro, historial de salud y otra información que proporcione para el tratamiento.</p>
+            <p><strong>2. Cómo usamos sus datos:</strong> Para programar citas, brindar atención, procesar facturación y seguros, enviar recordatorios de citas y cumplir con regulaciones de atención médica.</p>
+            <p><strong>3. Consentimiento SMS:</strong> Con su opt-in, podemos enviar recordatorios u ofertas promocionales por mensaje de texto. La frecuencia de mensajes varía. Responda STOP para cancelar en cualquier momento.</p>
+            <p><strong>4. Compartir datos:</strong> No vendemos su información. Solo la compartimos con personal, compañías de seguros, laboratorios o autoridades legales según sea requerido.</p>
+            <p><strong>5. Retención de datos:</strong> Los registros se almacenan de forma segura y se conservan según lo requiera la ley y las pautas de la práctica dental.</p>
+            <p><strong>6. Sus derechos:</strong> Puede solicitar acceso, corrección o eliminación de su información cuando lo permita la ley. Contacte a info@sharmadentaldublin.com.</p>
+            <p><strong>7. Seguridad:</strong> Usamos salvaguardas para proteger sus datos personales contra acceso no autorizado, pérdida o mal uso.</p>
+            <p><strong>8. Cambios:</strong> Podemos actualizar esta política ocasionalmente y publicaremos los cambios en nuestro sitio web.</p>
+        </div>
+    </div>
+
+    <script>
+        // Modal logic for intake form
+        const intakeModal = document.getElementById("intakeModal");
+        const openIntakeBtns = document.querySelectorAll(".consultation-modal-btn");
+        const closeIntakeBtn = document.querySelector(".intake-modal-close");
+        
+        // Open intake modal when any consultation button is clicked
+        if (openIntakeBtns.length > 0) {
+            openIntakeBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) { 
+                    e.preventDefault(); 
+                    intakeModal.style.display = "flex"; 
+                    document.body.style.overflow = "hidden";
+                });
+            });
+        }
+        
+        // Close intake modal
+        if (closeIntakeBtn) {
+            closeIntakeBtn.addEventListener('click', function(){ 
+                intakeModal.style.display = "none"; 
+                document.body.style.overflow = "auto";
+            });
+        }
+        
+        // Modal logic for privacy policy
+        const policyModal = document.getElementById("policyModal");
+        const openPolicyBtn = document.getElementById("openPolicy");
+        const closePolicyBtn = document.querySelector(".policy-modal-close");
+
+        // Open privacy policy modal
+        if (openPolicyBtn) {
+            openPolicyBtn.addEventListener('click', function(e){ 
+                e.preventDefault(); 
+                policyModal.style.display = "flex"; 
+            });
+        }
+        
+        // Close privacy policy modal
+        if (closePolicyBtn) {
+            closePolicyBtn.addEventListener('click', function(){ 
+                policyModal.style.display = "none"; 
+            });
+        }
+        
+        // Close modals when clicking outside
+        window.addEventListener('click', function(e){ 
+            if (e.target == intakeModal) {
+                intakeModal.style.display = "none"; 
+                document.body.style.overflow = "auto";
+            }
+            if (e.target == policyModal) {
+                policyModal.style.display = "none";
+            }
+        });
+
+        // Form validation
+        const form = document.getElementById('intakeForm');
+        if (form) {
+            const phone = document.getElementById('phone');
+            const agreePrivacy = document.getElementById('agreePrivacy');
+            const errorEl = document.getElementById('formError');
+            const honeypot = document.getElementById('website_hp');
+
+            function showError(msg){
+                errorEl.textContent = msg;
+                errorEl.style.display = 'block';
+            }
+            
+            form.addEventListener('submit', function(e){
+                if (errorEl) errorEl.style.display = 'none';
+                if (honeypot && honeypot.value.trim() !== '') { 
+                    e.preventDefault(); 
+                    return; 
+                }
+                if (!agreePrivacy.checked) { 
+                    e.preventDefault(); 
+                    showError('Por favor acepte la Política de Privacidad.'); 
+                    return; 
+                }
+                if (!phone.value || phone.value.trim().length < 7) { 
+                    e.preventDefault(); 
+                    showError('Por favor proporcione un número de teléfono válido.'); 
+                    phone.focus(); 
+                    return; 
+                }
+            });
+        }
+    </script>
+</body>
+</html>
