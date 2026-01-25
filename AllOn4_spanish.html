@@ -1221,236 +1221,234 @@
     </div>
 
     <script>
-        // Modal logic for intake form
-        const intakeModal = document.getElementById("intakeModal");
-        const openIntakeBtns = document.querySelectorAll(".consultation-modal-btn");
-        const closeIntakeBtn = document.querySelector(".intake-modal-close");
-        
-        // Open intake modal when any consultation button is clicked
-        if (openIntakeBtns.length > 0) {
-            openIntakeBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) { 
-                    e.preventDefault(); 
-                    intakeModal.style.display = "flex"; 
-                    document.body.style.overflow = "hidden";
-                });
-            });
-        }
-        
-        // Close intake modal
-        if (closeIntakeBtn) {
-            closeIntakeBtn.addEventListener('click', function(){ 
-                intakeModal.style.display = "none"; 
-                document.body.style.overflow = "auto";
-            });
-        }
-        
-        // Modal logic for privacy policy
-        const policyModal = document.getElementById("policyModal");
-        const openPolicyBtn = document.getElementById("openPolicy");
-        const closePolicyBtn = document.querySelector(".policy-modal-close");
-
-        // Open privacy policy modal
-        if (openPolicyBtn) {
-            openPolicyBtn.addEventListener('click', function(e){ 
+    // Modal logic for intake form
+    const intakeModal = document.getElementById("intakeModal");
+    const openIntakeBtns = document.querySelectorAll(".consultation-modal-btn");
+    const closeIntakeBtn = document.querySelector(".intake-modal-close");
+    
+    // Open intake modal when any consultation button is clicked
+    if (openIntakeBtns.length > 0) {
+        openIntakeBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) { 
                 e.preventDefault(); 
-                policyModal.style.display = "flex"; 
+                intakeModal.style.display = "flex"; 
+                document.body.style.overflow = "hidden";
             });
-        }
-        
-        // Close privacy policy modal
-        if (closePolicyBtn) {
-            closePolicyBtn.addEventListener('click', function(){ 
-                policyModal.style.display = "none"; 
-            });
-        }
-        
-        // Close modals when clicking outside
-        window.addEventListener('click', function(e){ 
-            if (e.target == intakeModal) {
-                intakeModal.style.display = "none"; 
-                document.body.style.overflow = "auto";
-            }
-            if (e.target == policyModal) {
-                policyModal.style.display = "none";
-            }
         });
-
-        // Make.com webhook URL
-        const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/cjgz95lr53v19vof0qfbr67fe3i7kce5';
-
-
-        // Form validation and submission
-const form = document.getElementById('intakeForm');
-if (form) {
-    const final_phone = "1" + document.getElementById('phone').value.replace(/\D/g, '');
-    const agreePrivacy = document.getElementById('agreePrivacy');
-    const errorEl = document.getElementById('formError');
-    const honeypot = document.getElementById('website_hp');
-    const submitButton = form.querySelector('button[type="submit"]');
-
-    function showError(msg){
-        errorEl.textContent = msg;
-        errorEl.style.display = 'block';
     }
     
-    function hideError(){
-        errorEl.style.display = 'none';
+    // Close intake modal
+    if (closeIntakeBtn) {
+        closeIntakeBtn.addEventListener('click', function(){ 
+            intakeModal.style.display = "none"; 
+            document.body.style.overflow = "auto";
+        });
     }
     
-    function showLoading() {
-        submitButton.disabled = true;
-        submitButton.innerHTML = 'Submitting...';
-    }
-    
-    function hideLoading() {
-        submitButton.disabled = false;
-        submitButton.innerHTML = 'Book appointment Now';
-    }
-    
-    function showSuccess() {
-        alert('Thank you! Your appointment request has been submitted successfully. We will contact you shortly.');
-        intakeModal.style.display = "none";
-        form.reset();
-    }
-    
-    function showFailure() {
-        alert('There was an error submitting your form. Please try again or contact us directly.');
-    }
+    // Modal logic for privacy policy
+    const policyModal = document.getElementById("policyModal");
+    const openPolicyBtn = document.getElementById("openPolicy");
+    const closePolicyBtn = document.querySelector(".policy-modal-close");
 
-    // Function to send data to Make.com webhook
-    async function sendToMakeWebhook(formData) {
-        const payload = {
-            contact_id: `sharma_${Date.now()}`,
-            first_name: formData.get('firstName'),
-            full_name: `${formData.get('firstName')} ${formData.get('lastName')}`,
-            email: formData.get('email'),
-            phone: "1" + formData.get('phone').replace(/\D/g, ''),
-            tags: ["Web Submission"],
-            country: "US",
-            timezone: "America/Los_Angeles",
-            date_created: new Date().toISOString(),
-            contact_source: "Website Form",
-            full_address: formData.get('address'),
-            contact_type: "lead",
-            additional_info: {
-                dob: formData.get('dob'),
-                preferred_contact: formData.get('preferredContact'),
-                insurance: formData.get('insurance'),
-                policy_no: formData.get('policyNo'),
-                reason: formData.get('reason'),
-                sms_consent: formData.get('smsConsent') === 'yes'
-            }
-        };
-
-        try {
-            const response = await fetch(MAKE_WEBHOOK_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload)
-            });
-            
-            return response.ok;
-        } catch (error) {
-            console.error('Error sending to Make webhook:', error);
-            return false;
+    // Open privacy policy modal
+    if (openPolicyBtn) {
+        openPolicyBtn.addEventListener('click', function(e){ 
+            e.preventDefault(); 
+            policyModal.style.display = "flex"; 
+        });
+    }
+    
+    // Close privacy policy modal
+    if (closePolicyBtn) {
+        closePolicyBtn.addEventListener('click', function(){ 
+            policyModal.style.display = "none"; 
+        });
+    }
+    
+    // Close modals when clicking outside
+    window.addEventListener('click', function(e){ 
+        if (e.target == intakeModal) {
+            intakeModal.style.display = "none"; 
+            document.body.style.overflow = "auto";
         }
-    }
-
-    form.addEventListener('submit', async function(e){
-        e.preventDefault();
-        
-        if (errorEl) hideError();
-        
-        // Honeypot check
-        if (honeypot && honeypot.value.trim() !== '') { 
-            return; 
-        }
-        
-        if (!agreePrivacy.checked) { 
-            showError('Please acknowledge the Privacy Policy.'); 
-            return; 
-        }
-        
-const rawPhoneDigits = phoneInput.value.replace(/\D/g, '');
-
-// Validate the phone number - check if it has at least 10 digits
-if (!rawPhoneDigits || rawPhoneDigits.length < 10) { 
-    showError('Please provide a valid 10-digit phone number.'); 
-    phoneInput.focus(); 
-    return; 
-}
-
-        // Show loading state
-        showLoading();
-        
-        // Prepare form data
-        const formData = new FormData(form);
-        
-        try {
-            // Send to Make.com webhook only
-            const makeSuccess = await sendToMakeWebhook(formData);
-            
-            if (makeSuccess) {
-                showSuccess();
-            } else {
-                showFailure();
-            }
-        } catch (error) {
-            console.error('Form submission error:', error);
-            showFailure();
-        } finally {
-            hideLoading();
+        if (e.target == policyModal) {
+            policyModal.style.display = "none";
         }
     });
-}
-    </script>
-            <script>
-            // Phone number formatting functionality
-const phoneInput = document.getElementById('phone');
 
-// Set the placeholder to the desired format
-phoneInput.placeholder = "(332) 111-1155";
+    // Make.com webhook URL
+    const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/cjgz95lr53v19vof0qfbr67fe3i7kce5';
 
-phoneInput.addEventListener('input', function(e) {
-    // Remove all non-digit characters
-    let phoneNumber = e.target.value.replace(/\D/g, '');
-    
-    // Format the phone number
-    if (phoneNumber.length > 0) {
-        // Apply the (XXX) XXX-XXXX format
-        if (phoneNumber.length <= 3) {
-            phoneNumber = '(' + phoneNumber;
-        } else if (phoneNumber.length <= 6) {
-            phoneNumber = '(' + phoneNumber.substring(0, 3) + ') ' + phoneNumber.substring(3);
-        } else {
-            phoneNumber = '(' + phoneNumber.substring(0, 3) + ') ' + 
-                          phoneNumber.substring(3, 6) + '-' + 
-                          phoneNumber.substring(6, 10);
+    // Form validation and submission
+    const form = document.getElementById('intakeForm');
+    if (form) {
+        const phoneInput = document.getElementById('phone');
+        const agreePrivacy = document.getElementById('agreePrivacy');
+        const errorEl = document.getElementById('formError');
+        const honeypot = document.getElementById('website_hp');
+        const submitButton = form.querySelector('button[type="submit"]');
+
+        function showError(msg){
+            errorEl.textContent = msg;
+            errorEl.style.display = 'block';
         }
-    }
-    
-    // Update the input value
-    e.target.value = phoneNumber;
-});
-
-// Handle backspace and delete keys to allow proper editing
-phoneInput.addEventListener('keydown', function(e) {
-    // If backspace or delete is pressed and the cursor is before a special character
-    // move the cursor back one position to allow deleting the digit instead of the formatting character
-    if (e.key === 'Backspace' || e.key === 'Delete') {
-        const cursorPosition = e.target.selectionStart;
-        const currentValue = e.target.value;
         
-        // If the character before the cursor is a non-digit, move the cursor back
-        if (cursorPosition > 0 && !/\d/.test(currentValue.charAt(cursorPosition - 1))) {
-            e.preventDefault();
-            e.target.setSelectionRange(cursorPosition - 1, cursorPosition - 1);
+        function hideError(){
+            errorEl.style.display = 'none';
         }
+        
+        function showLoading() {
+            submitButton.disabled = true;
+            submitButton.innerHTML = 'Submitting...';
+        }
+        
+        function hideLoading() {
+            submitButton.disabled = false;
+            submitButton.innerHTML = 'Book appointment Now';
+        }
+        
+        function showSuccess() {
+            alert('Thank you! Your appointment request has been submitted successfully. We will contact you shortly.');
+            intakeModal.style.display = "none";
+            form.reset();
+        }
+        
+        function showFailure() {
+            alert('There was an error submitting your form. Please try again or contact us directly.');
+        }
+
+        // Function to send data to Make.com webhook
+        async function sendToMakeWebhook(formData) {
+            const payload = {
+                contact_id: `sharma_${Date.now()}`,
+                first_name: formData.get('firstName'),
+                full_name: `${formData.get('firstName')} ${formData.get('lastName')}`,
+                email: formData.get('email'),
+                phone: "1" + formData.get('phone').replace(/\D/g, ''),
+                tags: ["Web Submission"],
+                country: "US",
+                timezone: "America/Los_Angeles",
+                date_created: new Date().toISOString(),
+                contact_source: "Website Form",
+                full_address: formData.get('address'),
+                contact_type: "lead",
+                additional_info: {
+                    dob: formData.get('dob'),
+                    preferred_contact: formData.get('preferredContact'),
+                    insurance: formData.get('insurance'),
+                    policy_no: formData.get('policyNo'),
+                    reason: formData.get('reason'),
+                    sms_consent: formData.get('smsConsent') === 'yes'
+                }
+            };
+
+            try {
+                const response = await fetch(MAKE_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload)
+                });
+                
+                return response.ok;
+            } catch (error) {
+                console.error('Error sending to Make webhook:', error);
+                return false;
+            }
+        }
+
+        // Phone number formatting functionality
+        // Set the placeholder to the desired format
+        if (phoneInput) {
+            phoneInput.placeholder = "(332) 111-1155";
+
+            phoneInput.addEventListener('input', function(e) {
+                // Remove all non-digit characters
+                let phoneNumber = e.target.value.replace(/\D/g, '');
+                
+                // Format the phone number
+                if (phoneNumber.length > 0) {
+                    // Apply the (XXX) XXX-XXXX format
+                    if (phoneNumber.length <= 3) {
+                        phoneNumber = '(' + phoneNumber;
+                    } else if (phoneNumber.length <= 6) {
+                        phoneNumber = '(' + phoneNumber.substring(0, 3) + ') ' + phoneNumber.substring(3);
+                    } else {
+                        phoneNumber = '(' + phoneNumber.substring(0, 3) + ') ' + 
+                                      phoneNumber.substring(3, 6) + '-' + 
+                                      phoneNumber.substring(6, 10);
+                    }
+                }
+                
+                // Update the input value
+                e.target.value = phoneNumber;
+            });
+
+            // Handle backspace and delete keys to allow proper editing
+            phoneInput.addEventListener('keydown', function(e) {
+                // If backspace or delete is pressed and the cursor is before a special character
+                // move the cursor back one position to allow deleting the digit instead of the formatting character
+                if (e.key === 'Backspace' || e.key === 'Delete') {
+                    const cursorPosition = e.target.selectionStart;
+                    const currentValue = e.target.value;
+                    
+                    // If the character before the cursor is a non-digit, move the cursor back
+                    if (cursorPosition > 0 && !/\d/.test(currentValue.charAt(cursorPosition - 1))) {
+                        e.preventDefault();
+                        e.target.setSelectionRange(cursorPosition - 1, cursorPosition - 1);
+                    }
+                }
+            });
+        }
+
+        form.addEventListener('submit', async function(e){
+            e.preventDefault();
+            
+            if (errorEl) hideError();
+            
+            // Honeypot check
+            if (honeypot && honeypot.value.trim() !== '') { 
+                return; 
+            }
+            
+            if (!agreePrivacy.checked) { 
+                showError('Please acknowledge the Privacy Policy.'); 
+                return; 
+            }
+            
+            const rawPhoneDigits = phoneInput.value.replace(/\D/g, '');
+            
+            // Validate the phone number - check if it has at least 10 digits
+            if (!rawPhoneDigits || rawPhoneDigits.length < 10) { 
+                showError('Please provide a valid 10-digit phone number.'); 
+                phoneInput.focus(); 
+                return; 
+            }
+
+            // Show loading state
+            showLoading();
+            
+            // Prepare form data
+            const formData = new FormData(form);
+            
+            try {
+                // Send to Make.com webhook only
+                const makeSuccess = await sendToMakeWebhook(formData);
+                
+                if (makeSuccess) {
+                    showSuccess();
+                } else {
+                    showFailure();
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+                showFailure();
+            } finally {
+                hideLoading();
+            }
+        });
     }
-});
-        </script>
+</script>
 </body>
 </html>
