@@ -1279,39 +1279,6 @@
         // Make.com webhook URL
         const MAKE_WEBHOOK_URL = 'https://hook.us2.make.com/cjgz95lr53v19vof0qfbr67fe3i7kce5';
 
-        // Form validation
-        const form = document.getElementById('intakeForm');
-        if (form) {
-            const phone = document.getElementById('phone');
-            const agreePrivacy = document.getElementById('agreePrivacy');
-            const errorEl = document.getElementById('formError');
-            const honeypot = document.getElementById('website_hp');
-
-            function showError(msg){
-                errorEl.textContent = msg;
-                errorEl.style.display = 'block';
-            }
-            
-            form.addEventListener('submit', function(e){
-                if (errorEl) errorEl.style.display = 'none';
-                if (honeypot && honeypot.value.trim() !== '') { 
-                    e.preventDefault(); 
-                    return; 
-                }
-                if (!agreePrivacy.checked) { 
-                    e.preventDefault(); 
-                    showError('Por favor acepte la Política de Privacidad.'); 
-                    return; 
-                }
-                if (!phone.value || phone.value.trim().length < 7) { 
-                    e.preventDefault(); 
-                    showError('Por favor proporcione un número de teléfono válido.'); 
-                    phone.focus(); 
-                    return; 
-                }
-            });
-        }
-
 
         // Form validation and submission
 const form = document.getElementById('intakeForm');
